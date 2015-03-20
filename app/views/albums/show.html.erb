@@ -15,5 +15,13 @@
   <%= @album.year %>
 </p>
 
+<h2>Songs</h2>
+
+<% @songs.each do |song| %>
+	<%= link_to song.title, [song.album, song] %>
+<% end %>
+
+<hr>
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
