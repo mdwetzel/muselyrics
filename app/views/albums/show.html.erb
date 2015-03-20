@@ -21,6 +21,10 @@
 	<%= link_to song.title, [song.album, song] %>
 <% end %>
 
+<br>
+
+<%= link_to "New Song", new_album_song_path(@album) %>
+
 <hr>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
