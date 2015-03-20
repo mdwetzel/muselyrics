@@ -1,31 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-8">
+      <h2>News</h2>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Lyrics</h2>
+      <% @albums.each do |album| %>
+        <article>
+          <%= link_to album.title, album %>
+        </article>
+      <% end %>
+    </div>
+  </div>
 
-<h1>Listing Albums</h1>
+  <hr>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.description %></td>
-        <td><%= album.year %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Album', new_album_path %>
+  <footer>
+    <p>&copy; Company 2014</p>
+  </footer>
+</div> <!-- /container -->

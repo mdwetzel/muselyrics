@@ -1,0 +1,10 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+header { 
+	h1 { 
+		text-align:center;
+		font-size:5em;
+		text-transform:uppercase;
+	}
+}
