@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.order("year DESC")
   end
 
   # GET /albums/1
@@ -73,6 +73,6 @@ class AlbumsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :description, :year)
+      params.require(:album).permit(:title, :description, :year, :image)
     end
 end

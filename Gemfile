@@ -5,6 +5,10 @@ ruby '2.1.5'
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'carrierwave'
+gem 'fog'
+gem "mini_magick"
+gem "figaro"
 gem 'sass-rails', '>= 3.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'

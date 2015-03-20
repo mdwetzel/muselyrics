@@ -10,7 +10,7 @@
       <h2>Lyrics</h2>
       <% @albums.each do |album| %>
         <article>
-          <%= link_to album.title, album %>
+          <%= link_to(image_tag(album.image.thumb_2), album) %>
         </article>
       <% end %>
     </div>
