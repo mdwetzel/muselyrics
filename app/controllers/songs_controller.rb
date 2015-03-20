@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  before_action :set_album, only: [:new, :edit]
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   # GET /songs
@@ -28,7 +29,7 @@ class SongsController < ApplicationController
 
     respond_to do |format|
       if @song.save
-        format.html { redirect_to @song, notice: 'Song was successfully created.' }
+        format.html { redirect_to [@song.album, @song], notice: 'Song was successfully created.' }
         format.json { render :show, status: :created, location: @song }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class SongsController < ApplicationController
   def update
     respond_to do |format|
       if @song.update(song_params)
-        format.html { redirect_to @song, notice: 'Song was successfully updated.' }
+        format.html { redirect_to [@song.album, @song], notice: 'Song was successfully updated.' }
         format.json { render :show, status: :ok, location: @song }
       else
         format.html { render :edit }
@@ -64,11 +65,15 @@ class SongsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
-      @song = Song.find(params[:id])
+      @song = Song.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :lyrics, :description)
+      params.require(:song).permit(:title, :lyrics, :description, :album_id)
+    end
+
+    def set_album
+      @album = Album.friendly.find(params[:album_id])
     end
 end
