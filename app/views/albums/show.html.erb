@@ -1,37 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-6">
+		<h2>Songs</h2>
 
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
-</p>
+		<ul>
+		<% @songs.each do |song| %>
+			<li><%= link_to "#{song.track} - #{song.title}", [song.album, song] %></li>
+		<% end %>
+		</ul>
 
-<p>
-  <strong>Description:</strong>
-  <%= @album.description %>
-</p>
+		<% if can? :create, Song %>
+		<p>Song missing? <%= link_to "Add a new song", new_album_song_path(@album) %></p>
+		<% end %>
 
-<p>
-  <strong>Year:</strong>
-  <%= @album.year %>
-</p>
+		<% if can? :manage, @album %>
+		<%= link_to 'Edit', edit_album_path(@album) %>
+		<%= link_to "Destroy", @album, method: :delete, data: { confirm: "Are you sure?" } %>
+		<% end %>
+	</div>
 
-<%= image_tag @album.image %>
-
-<h2>Songs</h2>
-
-<ul>
-<% @songs.each do |song| %>
-	<li><%= link_to "#{song.track} - #{song.title}", [song.album, song] %></li>
-<% end %>
-</ul>
-
-<br>
-
-<%= link_to "New Song", new_album_song_path(@album) %>
-
-<hr>
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
-
-<%= link_to "Destroy", @album, method: :delete, data: { confirm: "Are you sure?" } %>
+	<div class="col-md-6">
+		<%= image_tag @album.image.thumb_4 %>
+		<h2>Year</h2>
+		<p><%= @album.year %></p>
+	</div>
+</div>

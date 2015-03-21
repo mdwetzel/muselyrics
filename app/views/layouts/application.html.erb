@@ -9,6 +9,9 @@
 <body>
 
 <div class="container">
+
+<%= user_signed_in? && current_user.admin? %>
+
     <header>
     	<h1><%= link_to "Muse Lyrics", root_path %></h1>
     </header>
