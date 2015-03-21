@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
 
-  before_action :set_album, only: [:new, :edit, :show]
+  before_action :set_album, only: [:new, :edit, :show, :update]
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
