@@ -1,26 +1,33 @@
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-5">
+		<h1><%= @album.title %> <small><%= @album.year %></small></h1>
+		<%= image_tag @album.image.thumb_4, class: 'album-photo' %>
+		<% if can? :manage, @album %>
+		<div class="well admin-box">
+			<fieldset>
+
+			<legend>Admin</legend>
+			<%= link_to 'Edit', edit_album_path(@album) %>
+			<%= link_to "Destroy", @album, method: :delete, data: { confirm: "Are you sure?" } %>
+			</fieldset>
+		</div>
+		<% end %>
+	</div>
+	<div class="col-md-7">
 		<h2>Songs</h2>
 
+		<% if @songs.any? %>
 		<ul>
 		<% @songs.each do |song| %>
-			<li><%= link_to "#{song.track} - #{song.title}", [song.album, song] %></li>
+			<li><%= song.track %> - <%= link_to song.title, [song.album, song] %></li>
 		<% end %>
 		</ul>
+		<% else %>
+		<p>No songs yet.</p>
+		<% end %>
 
 		<% if can? :create, Song %>
 		<p>Song missing? <%= link_to "Add a new song", new_album_song_path(@album) %></p>
 		<% end %>
-
-		<% if can? :manage, @album %>
-		<%= link_to 'Edit', edit_album_path(@album) %>
-		<%= link_to "Destroy", @album, method: :delete, data: { confirm: "Are you sure?" } %>
-		<% end %>
-	</div>
-
-	<div class="col-md-6">
-		<%= image_tag @album.image.thumb_4 %>
-		<h2>Year</h2>
-		<p><%= @album.year %></p>
 	</div>
 </div>

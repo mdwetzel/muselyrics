@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-md-5">
+		<h1><%= link_to @song.album.title, @song.album %><small> > <%= @song.title %></small></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @song.title %>
-</p>
+		<%= simple_format @song.lyrics %>
 
-<p>
-  <strong>Lyrics:</strong>
-  <%= @song.lyrics %>
-</p>
+		<br>
 
-<p>
-  <strong>Description:</strong>
-  <%= @song.description %>
-</p>
+		<% if can? :update, @song %>
+		<p>Wrong lyrics? <%= link_to "Fix them now!", edit_album_song_path(@album, @song) %></p>
+		<% end %>
+	</div>
+	<div class="col-md-7">
+		<h3>More from <%= @song.album.title %>...</h3>
+		<ul>
+		<% @songs.each do |song| %>
+			<li><%= link_to song.title, [song.album, song] %></li>
+		<% end %>
+		</ul>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_album_song_path(@song.album, @song) %> |
-<%= link_to 'Back', album_songs_path %>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Comments</h2>
+	</div>
+</div>
