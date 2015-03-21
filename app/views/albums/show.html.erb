@@ -19,9 +19,11 @@
 
 <h2>Songs</h2>
 
+<ul>
 <% @songs.each do |song| %>
-	<%= link_to song.title, [song.album, song] %>
+	<li><%= link_to "#{song.track} - #{song.title}", [song.album, song] %></li>
 <% end %>
+</ul>
 
 <br>
 

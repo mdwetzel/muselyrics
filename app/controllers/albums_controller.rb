@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @songs = @album.songs
+    @songs = @album.songs.order('track')
   end
 
   def new
