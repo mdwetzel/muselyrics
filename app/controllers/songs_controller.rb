@@ -12,6 +12,8 @@ class SongsController < ApplicationController
   def show
     @songs = @album.songs.order('track')
     @songs = @songs.where.not(id: @song)
+    @comment = @song.comments.new
+    @comments = @song.comments
   end
 
   def new

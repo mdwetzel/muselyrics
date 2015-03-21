@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
   root 'albums#index'
 
   devise_for :users

@@ -21,7 +21,24 @@
 </div>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-5">
 		<h2>Comments</h2>
+
+		<% if @comments.any? %>
+			<% @comments.each do |comment| %>
+				<article>
+					<%= simple_format comment.body %>
+					<footer><%= comment.created_at %></footer>
+				</article>
+			<% end %>
+		<% else %>
+			<p>No comments yet!</p>
+		<% end %>
+
+		<%= simple_form_for @comment do |f| %>
+			<%= f.input :body, label: false %>
+			<%= f.hidden_field :song_id, value: @song.id %>
+			<%= f.submit %>
+		<% end %>
 	</div>
 </div>
