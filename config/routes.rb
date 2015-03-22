@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :comments
-
   root 'albums#index'
 
   devise_for :users
 
   resources :albums
   resources :songs
+  resources :comments
 
   resources :albums, except: [:new], path: '' do 
     resources :songs, except: [:index], path: ''

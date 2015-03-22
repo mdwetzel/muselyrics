@@ -1,6 +1,6 @@
 	<div class="row">
 	<div class="col-md-5">
-		<h1><%= link_to @song.album.title, @song.album %><small> > <%= @song.title %></small></h1>
+		<h1><%= link_to @song.album.title, @song.album %> <small><%= @song.title %></small></h1>
 
 		<%= simple_format @song.lyrics %>
 
@@ -47,10 +47,12 @@
 			<p>No comments yet!</p>
 		<% end %>
 
+		<h3>Add comment</h3>
+
 		<%= simple_form_for Comment.new do |f| %>
 			<%= f.input :body, label: false %>
 			<%= f.hidden_field :song_id, value: @song.id %>
-			<%= f.submit %>
+			<%= f.submit "Add comment", class: "btn btn-primary" %>
 		<% end %>
 	</div>
 </div>
