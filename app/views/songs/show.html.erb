@@ -1,4 +1,4 @@
-<div class="row">
+	<div class="row">
 	<div class="col-md-5">
 		<h1><%= link_to @song.album.title, @song.album %><small> > <%= @song.title %></small></h1>
 
@@ -7,7 +7,7 @@
 		<br>
 
 		<% if can? :update, @song %>
-		<p>Wrong lyrics? <%= link_to "Fix them now!", edit_album_song_path(@album, @song) %></p>
+		<p class="alert alert-warning">Wrong lyrics? <%= link_to "Fix them now!", edit_album_song_path(@album, @song), class: "alert-link" %></p>
 		<% end %>
 	</div>
 	<div class="col-md-7">
@@ -24,7 +24,7 @@
 
 <div class="row">
 	<div class="col-md-5">
-		<h2>Comments</h2>
+		<h2>Comments <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
 
 		<% if @comments.any? %>
 			<% @comments.each do |comment| %>
@@ -34,7 +34,7 @@
 					<footer>
 						<%= time_ago_in_words comment.created_at %> ago
 						<% if can? :update, comment %>
-							<%= link_to "Edit", "#" %>
+							<%= link_to "Edit", edit_comment_path(comment) %>
 						<% end %>
 						<% if can? :destroy, comment %>
 							<%= link_to "Destroy", comment, method: :delete, 
