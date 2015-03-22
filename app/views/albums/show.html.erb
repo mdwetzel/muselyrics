@@ -2,18 +2,8 @@
 	<div class="col-md-5">
 		<h1><%= @album.title %> <small><%= @album.year %></small></h1>
 		<%= image_tag @album.image.thumb_4, class: 'album-photo' %>
-		<% if can? :manage, @album %>
-		<div class="well admin-box">
-			<fieldset>
-
-			<legend>Admin</legend>
-			<%= link_to 'Edit', edit_album_path(@album) %>
-			<%= link_to "Destroy", @album, method: :delete, data: { confirm: "Are you sure?" } %>
-			</fieldset>
-		</div>
-		<% end %>
 	</div>
-	<div class="col-md-7">
+	<div class="col-md-7 songs">
 		<h2>Songs</h2>
 
 		<% if @songs.any? %>
@@ -28,6 +18,23 @@
 
 		<% if can? :create, Song %>
 		<p>Song missing? <%= link_to "Add a new song", new_album_song_path(@album) %></p>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<% if can? :manage, @album %>
+		<div class="well admin-box">
+			<fieldset>
+
+			<legend>Admin</legend>
+			<ul>
+				<li><%= link_to 'Edit', edit_album_path(@album) %></li>
+				<li><%= link_to "Destroy", @album, method: :delete, data: { confirm: "Are you sure?" } %></li>
+			</ul>
+			</fieldset>
+		</div>
 		<% end %>
 	</div>
 </div>
