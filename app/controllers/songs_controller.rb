@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
 
-  before_action :set_album, only: [:new, :edit, :show, :update]
+  before_action :set_album, only: [:new, :edit, :show, :update, :create]
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
@@ -12,8 +12,7 @@ class SongsController < ApplicationController
   def show
     @songs = @album.songs.order('track')
     @songs = @songs.where.not(id: @song)
-    @comment = @song.comments.new
-    @comments = @song.comments
+    @comments = @song.comments.order('created_at')
   end
 
   def new

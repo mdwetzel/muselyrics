@@ -6,7 +6,8 @@ class Ability
       if user.admin?
         can :manage, :all
       elsif user.id # if logged in
-      	can [:update], Song
+      	can :update, Song
+        can :manage, Comment, user_id: user.id
       end
 
   	  can :read, :all

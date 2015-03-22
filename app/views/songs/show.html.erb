@@ -11,12 +11,14 @@
 		<% end %>
 	</div>
 	<div class="col-md-7">
+		<% if @songs.any? %>
 		<h3>More from <%= @song.album.title %>...</h3>
 		<ul>
 		<% @songs.each do |song| %>
 			<li><%= link_to song.title, [song.album, song] %></li>
 		<% end %>
 		</ul>
+		<% end %>
 	</div>
 </div>
 
@@ -27,15 +29,25 @@
 		<% if @comments.any? %>
 			<% @comments.each do |comment| %>
 				<article>
+					<header><%= comment.user.email %></header>
 					<%= simple_format comment.body %>
-					<footer><%= comment.created_at %></footer>
+					<footer>
+						<%= time_ago_in_words comment.created_at %> ago
+						<% if can? :update, comment %>
+							<%= link_to "Edit", "#" %>
+						<% end %>
+						<% if can? :destroy, comment %>
+							<%= link_to "Destroy", comment, method: :delete, 
+								data: { confirm: "Are you sure?" } %>
+						<% end %>	
+					</footer>
 				</article>
 			<% end %>
 		<% else %>
 			<p>No comments yet!</p>
 		<% end %>
 
-		<%= simple_form_for @comment do |f| %>
+		<%= simple_form_for Comment.new do |f| %>
 			<%= f.input :body, label: false %>
 			<%= f.hidden_field :song_id, value: @song.id %>
 			<%= f.submit %>
