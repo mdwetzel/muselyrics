@@ -1,20 +1,22 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy, :upvote, :downvote]
 
   load_and_authorize_resource
 
-  def index
-    @comments = Comment.all
+  def upvote
+    @comment.liked_by current_user
+
+    respond_to do |format|
+      format.json { render json: { score: @comment.score } }
+    end
   end
 
-  def show
-  end
+  def downvote
+    @comment.downvote_from current_user
 
-  def new
-    @comment = Comment.new
-  end
-
-  def edit
+    respond_to do |format|
+      format.json { render json: { score: @comment.score } }
+    end
   end
 
   def create
@@ -27,7 +29,8 @@ class CommentsController < ApplicationController
         notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        set_comment_prerequisites
+        format.html { render 'songs/show' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -59,6 +62,13 @@ class CommentsController < ApplicationController
 
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_comment_prerequisites
+      @album = @comment.song.album
+      @song = @comment.song
+      @songs = @album.songs.order('track').where.not(id: @song)
+      @comments = @song.comments.order('created_at')
     end
 
     def comment_params

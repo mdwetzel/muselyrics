@@ -1,5 +1,5 @@
-	<div class="row">
-	<div class="col-md-5">
+<div class="row">
+	<div class="col-md-6">
 		<h1><%= link_to @song.album.title, @song.album %> <small><%= @song.title %></small></h1>
 
 		<%= simple_format @song.lyrics %>
@@ -10,49 +10,28 @@
 		<p class="alert alert-warning">Wrong lyrics? <%= link_to "Fix them now!", edit_album_song_path(@album, @song), class: "alert-link" %></p>
 		<% end %>
 	</div>
-	<div class="col-md-7">
-		<% if @songs.any? %>
+	<div class="col-md-6">
 		<h3>More from <%= @song.album.title %>...</h3>
 		<ul>
-		<% @songs.each do |song| %>
-			<li><%= link_to song.title, [song.album, song] %></li>
-		<% end %>
+		<%= render @songs %>
 		</ul>
-		<% end %>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-5">
-		<h2>Comments <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
+	<div class="col-md-6 comments">
+		<div id="comments-box">
+			<h2>Comments <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
 
-		<% if @comments.any? %>
-			<% @comments.each do |comment| %>
-				<article>
-					<header><%= comment.user.email %></header>
-					<%= simple_format comment.body %>
-					<footer>
-						<%= time_ago_in_words comment.created_at %> ago
-						<% if can? :update, comment %>
-							<%= link_to "Edit", edit_comment_path(comment) %>
-						<% end %>
-						<% if can? :destroy, comment %>
-							<%= link_to "Destroy", comment, method: :delete, 
-								data: { confirm: "Are you sure?" } %>
-						<% end %>	
-					</footer>
-				</article>
-			<% end %>
-		<% else %>
-			<p>No comments yet!</p>
-		<% end %>
+		
+				<% if @comments.any? %>
+					<%= render 'comments/comments' %>
+				<% else %>
+					<p>No comments yet!</p>
+				<% end %>
+			</div>
 
-		<h3>Add comment</h3>
-
-		<%= simple_form_for Comment.new do |f| %>
-			<%= f.input :body, label: false %>
-			<%= f.hidden_field :song_id, value: @song.id %>
-			<%= f.submit "Add comment", class: "btn btn-primary" %>
-		<% end %>
+			<%= render 'comments/new' %>
+		</div>
 	</div>
 </div>

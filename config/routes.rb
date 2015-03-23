@@ -6,7 +6,14 @@ Rails.application.routes.draw do
 
   resources :albums
   resources :songs
-  resources :comments
+  resources :comments, except: [:new, :index, :show]
+
+  resources :comments do
+    member do
+      put "like", to: "comments#upvote"
+      put "dislike", to: "comments#downvote"
+    end
+  end
 
   resources :albums, except: [:new], path: '' do 
     resources :songs, except: [:index], path: ''
@@ -14,44 +21,4 @@ Rails.application.routes.draw do
   
   get '/about', to: 'static_pages#about', as: 'about'
   get '/contact', to: 'static_pages#contact', as: 'contact'
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

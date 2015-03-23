@@ -7,6 +7,7 @@ class Ability
         can :manage, :all
       elsif user.id # if logged in
       	can :update, Song
+        can [:upvote, :downvote], Comment
         can :manage, Comment, user_id: user.id
       end
 

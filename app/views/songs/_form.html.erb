@@ -1,19 +1,6 @@
 <%= simple_form_for [@album, @song], 
   default: { input_html: { class: 'form-control' } } do |f| %>
-  <% if @song.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
-
-      <ul>
-      <% @song.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <%= f.hidden_field :album_id, value: @album.id %>
-
   <%= f.input :title %>
   <%= f.input :track %>
   <%= f.input :description %>

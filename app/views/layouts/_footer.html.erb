@@ -1,3 +1,18 @@
-<footer>
+<footer id="page-footer">
 	<small>&copy; <%= Time.now.strftime("%Y") %> Muse Lyrics</small>
+
+	<% if Rails.env.development? %> 
+	<!-- blank space for console -->
+	<%= console %>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<% end %>
 </footer>

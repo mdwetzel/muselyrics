@@ -1,0 +1,32 @@
+<% @comments.each do |comment| %>
+	<article id="comments">
+		<header>
+			<div class="pull-left">
+				<%= link_to like_comment_path(comment), method: :put, remote: true, class: "upvote" do %>
+					<i class="glyphicon glyphicon-arrow-up upvote"></i>
+				<% end %>
+				<span class="score"><%= comment.score %></span>
+				<%= link_to dislike_comment_path(comment), method: :put, remote: true, class: "downvote"  do %>
+					<i class="glyphicon glyphicon-arrow-down downvote"></i>
+				<% end %>
+			</div>
+			<span class="user-email">
+			<%= link_to comment.user.email, '#' %>
+			</span>
+		</header>
+		<div class="clearfix"></div>
+		<div class="content"><%= simple_format comment.body %></div>
+		<footer>
+			<%= time_ago_in_words comment.created_at %> ago
+			<% if can? :update, comment %>
+				| 
+				<%= link_to "Edit", edit_comment_path(comment) %>
+			<% end %>
+			<% if can? :destroy, comment %>
+				<%= link_to "Destroy", comment, method: :delete, 
+					data: { confirm: "Are you sure?" } %>
+			<% end %>	
+		</footer>
+	</article>
+	<br>
+<% end %>

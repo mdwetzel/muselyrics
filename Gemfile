@@ -5,6 +5,7 @@ ruby '2.1.5'
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave'
 gem 'fog'
 gem "mini_magick"

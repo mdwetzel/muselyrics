@@ -1,0 +1,6 @@
+<h3>Add comment</h3>
+<%= simple_form_for @comment do |f| %>
+	<%= f.input :body, label: false %>
+	<%= f.hidden_field :song_id, value: @song.id %>
+	<%= f.submit "Add comment", class: "btn btn-primary" %>
+<% end %>

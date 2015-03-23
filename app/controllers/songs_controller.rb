@@ -13,6 +13,7 @@ class SongsController < ApplicationController
     @songs = @album.songs.order('track')
     @songs = @songs.where.not(id: @song)
     @comments = @song.comments.order('created_at')
+    @comment = Comment.new
   end
 
   def new
