@@ -4,6 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  devise_scope :user do
+    get "login", to: "devise/sessions#new"
+    get "register", to: "devise/registrations#new"
+    get "logout", to: "devise/sessions#destroy"    
+  end
+
   resources :albums
   resources :songs
   resources :comments, except: [:new, :index, :show]

@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @songs = Song.all
+    @songs = Song.search(params[:q])
   end
 
   def show
