@@ -1,9 +1,15 @@
 class Album < ActiveRecord::Base
-	has_many :songs, dependent: :destroy
-	accepts_nested_attributes_for :songs
 	
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 
+	has_many :songs, dependent: :destroy
+	accepts_nested_attributes_for :songs
+
 	mount_uploader :image, ImageUploader
+
+	validates :title, presence: true, length: { maximum: 150 }
+	validates :description, length: { maximum: 5000 }
+	validates :year, presence: true,numericality: { only_integer: true },
+		length: { maximum: 5000 }
 end
