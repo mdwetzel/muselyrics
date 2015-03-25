@@ -1,8 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-hysteria:
+one:
   title: MyString
-  lyrics: MyText
-  description: MyText
-  album: absolution
-  track: 1
+  body: MyText
+  user_id: 1

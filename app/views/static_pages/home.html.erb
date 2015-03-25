@@ -1,2 +1,21 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-8">
+    	<div id="latest-discussions">
+	      <h1>Latest song discussions</h1>
+	      <%= render 'comments/latest' %>
+	    </div>
+    </div>
+    <div class="col-md-4">
+      <div id="albums">
+        <h1>Lyrics</h1>
+        <% @albums.each do |album| %>
+          <article>
+            <%= link_to(image_tag(album.image.thumb_2), album) %>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div> <!-- /container -->

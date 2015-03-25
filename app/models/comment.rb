@@ -9,4 +9,8 @@ class Comment < ActiveRecord::Base
   def score
   	get_upvotes.count - get_downvotes.count
   end
+
+  def self.latest
+  	self.order('created_at DESC')
+  end
 end

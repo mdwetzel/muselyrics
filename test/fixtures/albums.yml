@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyText
-  year: 1
-
-two:
-  title: MyString
-  description: MyText
-  year: 1
+absolution:
+  title: This is a valid title
+  description: This is a perfectly valid description
+  year: 1999

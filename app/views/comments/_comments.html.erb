@@ -1,5 +1,5 @@
 <% @comments.each do |comment| %>
-	<article id="comments">
+	<article id="<%= comment.id %>">
 		<header>
 			<div class="pull-left">
 				<%= link_to like_comment_path(comment), method: :put, remote: true, class: "upvote" do %>

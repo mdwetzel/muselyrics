@@ -4,10 +4,6 @@ class AlbumsController < ApplicationController
 
   load_and_authorize_resource
 
-  def index
-    @albums = Album.order("year DESC")
-  end
-
   def show
     @songs = @album.songs.order('track')
   end

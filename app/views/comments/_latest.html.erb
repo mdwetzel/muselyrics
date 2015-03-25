@@ -1,0 +1,13 @@
+<% if @comments.any? %>
+	<% @comments.each do |comment| %>
+		<article>
+			<%= image_tag comment.song.album.image.thumb_tiny %>
+			<header><%= link_to comment.song.title, [comment.song.album, comment.song, anchor: "#{comment.id}"] %></header>
+			<%= truncate(comment.body, length: 200, omission: '') do %>
+				<%= link_to '(read more)', [comment.song.album, comment.song, anchor: "#{comment.id}"] %>
+			<% end %>	
+		</article>
+	<% end %>
+<% else %>
+	<p>No discussions yet!</p>
+<% end %>

@@ -22,8 +22,6 @@
 	<div class="col-md-6 comments">
 		<div id="comments-box">
 			<h2>Comments <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
-
-		
 				<% if @comments.any? %>
 					<%= render 'comments/comments' %>
 				<% else %>

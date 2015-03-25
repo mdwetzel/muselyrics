@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'albums#index'
+  root 'static_pages#home'
 
   devise_for :users
 
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "logout", to: "devise/sessions#destroy"    
   end
 
+  resources :articles
   resources :albums
   resources :songs
   resources :comments, except: [:new, :index, :show]

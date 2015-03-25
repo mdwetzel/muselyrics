@@ -1,11 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  body: MyText
-  user_id: 
-  song_id: 
-
-two:
-  body: MyText
-  user_id: 
-  song_id: 
+admin_comment:
+  body: This is a valid comment.
+  user: admin
+  song: hysteria
+user_comment:
+  body: This is a valid comment.
+  user: user
+  song: hysteria
+user_two_comment:
+  body: This is a valid comment.
+  user: user
+  song: hysteria
