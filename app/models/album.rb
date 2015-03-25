@@ -10,6 +10,6 @@ class Album < ActiveRecord::Base
 
 	validates :title, presence: true, length: { maximum: 150 }
 	validates :description, length: { maximum: 5000 }
-	validates :year, presence: true,numericality: { only_integer: true },
-		length: { maximum: 5000 }
+	validates :year, presence: true, numericality: { only_integer: true,
+		greater_than_or_equal_to: 1990, less_than_or_equal_to: Time.now.year }
 end

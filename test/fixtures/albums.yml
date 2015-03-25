@@ -1,6 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 absolution:
-  title: This is a valid title
-  description: This is a perfectly valid description
-  year: 1999
+  title: Absolution
+  description: Absolution blah blah blah blah blah
+  year: 2003
