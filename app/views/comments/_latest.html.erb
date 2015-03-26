@@ -2,7 +2,7 @@
 	<% @comments.each do |comment| %>
 		<article>
 			<%= link_to(image_tag(comment.song.album.image.thumb_tiny), album_path(comment.song.album)) %>
-			<header><%= link_to comment.user.email, user_profile_path(comment.user) %> <i class="glyphicon glyphicon-chevron-right"></i> <%= link_to comment.song.title, [comment.song.album, comment.song, anchor: "#{comment.id}"] %> <small><%= time_ago_in_words(comment.created_at) %> ago</small></header>				
+			<header><%= link_to comment.user.username, user_profile_path(comment.user) %> <i class="glyphicon glyphicon-chevron-right"></i> <%= link_to comment.song.title, [comment.song.album, comment.song, anchor: "#{comment.id}"] %> <small><%= time_ago_in_words(comment.created_at) %> ago</small></header>				
 			<%= truncate(comment.body, length: 175, omission: '') do %>
 				<%= link_to '(read more)', [comment.song.album, comment.song, anchor: "#{comment.id}"] %>
 			<% end %>	
