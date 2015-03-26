@@ -32,3 +32,72 @@ h1 {
 footer#page-footer { 
 	text-align:center;
 }
+
+div#latest-discussions { 
+
+	padding-bottom:10px;
+
+	h1 { 
+		padding:10px;
+		margin:0;
+	}
+
+	article { 
+		background-color:#fff;
+		padding:10px;
+		margin:8px;
+		border-radius: 5px;
+
+		header { 
+			i { 
+				color:gray;
+				font-size:.8em;
+			}
+
+			small { 
+				color:gray;
+			}
+		}
+
+		img { 
+			float:left;
+			padding-right:10px;
+		}
+
+		&:first-of-type {
+			margin-top:0;
+		}
+
+		&:last-of-type {
+			margin-bottom:0;
+		}
+	}
+}
+
+#albums { 
+	background-color:#e7e5d9;	
+	border-radius:5px;
+
+	padding-bottom:10px;
+	
+	h1 { 
+		color: #cc5c00;
+		text-transform: uppercase;
+		font-weight: bold;
+		margin:0;
+		padding:10px;
+	}
+
+	article { 
+		margin:10px;
+
+		&:first-of-type {
+			margin-top:0;
+		}
+
+		&:last-of-type {
+			margin-bottom:0;
+		}
+	}
+}
+

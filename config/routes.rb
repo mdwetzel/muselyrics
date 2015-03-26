@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  get 'users/profile/:id', to: 'users#profile', as: 'user_profile'
+
   devise_for :users
 
   devise_scope :user do

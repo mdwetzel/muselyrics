@@ -12,22 +12,3 @@
 		font-weight: bold;
 	}
 }
-
-#albums { 
-	background-color:#e7e5d9;	
-	border-radius:5px;
-	
-	h1 { 
-		color: #cc5c00;
-		text-transform: uppercase;
-		font-weight: bold;
-	}
-}
-
-img { 
-	filter:grayscale(100%);
-
-	&:hover { 
-		filter:grayscale(0%);
-	}
-}
