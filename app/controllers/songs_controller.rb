@@ -10,9 +10,8 @@ class SongsController < ApplicationController
   end
 
   def show
-    @songs = @album.songs.order('track')
-    @songs = @songs.where.not(id: @song)
-    @comments = @song.comments.order('created_at')
+    @songs = @album.songs.order('track').where.not(id: @song)
+    @comments = @song.comments.order(cached_votes_up: :desc)
     @comment = Comment.new
   end
 

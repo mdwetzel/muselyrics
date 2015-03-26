@@ -2,12 +2,26 @@
 	<article id="<%= comment.id %>">
 		<header>
 			<div class="pull-left">
-				<%= link_to like_comment_path(comment), method: :put, remote: true, class: "upvote" do %>
-					<i class="glyphicon glyphicon-arrow-up upvote"></i>
+				<% if can? :upvote, comment %>
+					<%= link_to like_comment_path(comment), method: :put, remote: true, class: "upvote" do %>
+						<i class="glyphicon glyphicon-arrow-up upvote"></i>
+					<% end %>
+				<% else %>
+					<%= link_to login_path, class: "upvote", "data-toggle" => "tooltip",
+						"data-placement" => "top", "title" => "Log In or Register to Upvote!" do %>
+						<i class="glyphicon glyphicon-arrow-up upvote"></i>
+					<% end %>
 				<% end %>
 				<span class="score"><%= comment.score %></span>
-				<%= link_to dislike_comment_path(comment), method: :put, remote: true, class: "downvote"  do %>
-					<i class="glyphicon glyphicon-arrow-down downvote"></i>
+				<% if can? :downvote, comment %>
+					<%= link_to dislike_comment_path(comment), method: :put, remote: true, class: "downvote"  do %>
+						<i class="glyphicon glyphicon-arrow-down downvote"></i>
+					<% end %>
+				<% else %>
+					<%= link_to login_path, class: "upvote", "data-toggle" => "tooltip",
+						"data-placement" => "top", "title" => "Log In or Register to Downvote!" do %>
+						<i class="glyphicon glyphicon-arrow-down upvote"></i>
+					<% end %>
 				<% end %>
 			</div>
 			<span class="user-email">
