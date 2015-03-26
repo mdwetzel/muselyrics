@@ -60,7 +60,7 @@ class SongTest < ActiveSupport::TestCase
   end
 
   test "search should return the correct songs for the query" do
-    q = songs(:one).title[1, -1]
+    q = songs(:hysteria).title[1, -1]
     songs = Song.search(q)
 
     songs.each do |song|

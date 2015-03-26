@@ -33,10 +33,10 @@ class SongsControllerTest < ActionController::TestCase
     sign_in @admin
     assert_difference('Song.count') do
       post :create, album_id: @song.album, song: { description: @song.description,
-        lyrics: @song.lyrics, title: @song.title, track: @song.track }
+        lyrics: @song.lyrics, title: @song.title, track: @song.track, album_id: @song.album }
     end
 
-    assert_redirected_to song_path(assigns(:song))
+    assert_redirected_to album_song_path(@song.album, assigns(:song))
   end
 
   test "should show song" do
