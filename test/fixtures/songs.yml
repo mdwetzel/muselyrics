@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 hysteria:
-  title: MyString
-  lyrics: MyText
-  description: MyText
+  title: Hysteria
+  lyrics: Let's just consider this the lyrics	
+  description: Released in 2003
   album: absolution
-  track: 1
+  track: 8

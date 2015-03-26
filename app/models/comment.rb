@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
   acts_as_votable
 
   validates :body, presence: true, length: { maximum: 5000 }
+  validates :user, presence: true
+  validates :song, presence: true
 
   def score
   	get_upvotes.count - get_downvotes.count
