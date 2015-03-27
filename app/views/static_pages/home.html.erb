@@ -1,15 +1,15 @@
 <div class="container">
   <!-- Example row of columns -->
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
     	<div id="latest-discussions">
-	      <h1>Latest song discussions</h1>
+	      <h2>Latest song discussions</h2>
 	      <%= render 'comments/latest' %>
 	    </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div id="albums">
-        <h1>Lyrics</h1>
+        <h2>Albums</h2>
         <% @albums.each do |album| %>
           <article>
             <%= link_to(image_tag(album.image.thumb_2), album) %>

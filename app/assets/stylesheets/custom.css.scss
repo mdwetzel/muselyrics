@@ -2,14 +2,30 @@
 @import "bootstrap";
 
 body { 
-	background-color:#029ECA
+	background-color:#000;
+	background-image:image-url("2ndlaw.jpg");
+	background-repeat: no-repeat;
+	background-position:-500px -100px;
+
 }
 
 header { 
+
 	h1 { 
-		text-align:center;
 		font-size:5em;
 		text-transform:uppercase;
+		font-weight: bold;
+
+
+		a { 
+			color:#fff;
+			text-shadow:#000 -1px -1px 5px;
+			text-decoration:overline underline;
+			&:hover { 
+				color:orange;
+				text-decoration:overline underline;
+			}
+		}
 	}
 }
 
@@ -23,23 +39,50 @@ header {
 	padding:10px 0;
 }
 
-h1 { 
+h2 { 
 	small { 
 		color:orange;
 	}
 }
 
 footer#page-footer { 
-	text-align:center;
+	padding:15px 0;
+	small {
+		text-decoration:underline overline;
+		text-align:center;
+		font-size:15px;
+		padding:10px 0;
+		text-transform:uppercase;
+	}
+
+	ul { 
+		display:inline-block;
+
+		li { 
+			list-style-type:none;
+			display:inline;
+			padding-right:10px;
+
+			a { 
+				color:gray;
+				font-size:.9em;
+				text-transform:uppercase;
+			}
+		}
+	}
 }
 
 div#latest-discussions { 
 
 	padding-bottom:10px;
 
-	h1 { 
-		padding:10px;
+	h2 { 
+		color: #cc5c00;
+		text-transform: uppercase;
+		font-weight: bold;
 		margin:0;
+		font-size:25px;
+		padding:10px;
 	}
 
 	article { 
@@ -80,12 +123,13 @@ div#latest-discussions {
 
 	padding-bottom:10px;
 	
-	h1 { 
+	h2 { 
 		color: #cc5c00;
 		text-transform: uppercase;
 		font-weight: bold;
 		margin:0;
 		padding:10px;
+		font-size:25px;
 	}
 
 	article { 

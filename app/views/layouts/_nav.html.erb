@@ -3,8 +3,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <%= form_tag songs_path, method: :get, class: "navbar-form navbar-left" do %>
-        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search" %>
-        <%= submit_tag "Search", name: nil %>
+        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Enter a song name" %>
+        <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
       <% end %>
 
        <ul class="nav navbar-nav navbar-right">
