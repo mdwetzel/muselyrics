@@ -1,25 +1,52 @@
 <div class="row">
-	<div class="col-md-6">
-		<h1><%= link_to @song.album.title, @song.album %> <small><%= @song.title %></small></h1>
+	<div class="col-md-8">
+		<div class="well">
+			<div id="song-lyrics">
+				<h2><%= @song.title %> <small><%= link_to @song.album.title, @song.album %></small></h2>
 
-		<%= simple_format @song.lyrics %>
+				<div id="lyrics">
+					<%= simple_format @song.lyrics %>
+				</div>
 
-		<br>
+				<br>
 
-		<% if can? :update, @song %>
-		<p class="alert alert-warning">Wrong lyrics? <%= link_to "Fix them now!", edit_album_song_path(@album, @song), class: "alert-link" %></p>
-		<% end %>
+				<% if can? :update, @song %>
+				<p class="alert alert-warning">Wrong lyrics? <%= link_to "Fix them now!", edit_album_song_path(@album, @song), class: "alert-link" %></p>
+				<% end %>
+
+				<% unless user_signed_in? %>
+				<p class="alert alert-warning">Wrong lyrics? <%= link_to "Register", register_path, class: "alert-link" %> or <%= link_to "Log In", login_path, 
+					class: "alert-link" %> to fix them now!</p>
+				<% end %>
+
+				<% if can? :delete, @song %>
+					<%= link_to "Delete song", [@song.album, @song],
+						data: { confirm: "Are you sure?" }, method: :delete %>
+				<% end %>				
+			</div>
+		</div>
 	</div>
-	<div class="col-md-6">
-		<h3>More from <%= @song.album.title %>...</h3>
-		<ul>
-		<%= render @songs %>
-		</ul>
+	<div>
+		<div class="col-md-4">
+			<div class="well">
+				<div id="songs">
+					<h2><%= @song.album.title %></h2>
+					<ul>
+					<%= render @songs %>
+					</ul>
+				</div>
+			</div>
+		</div>		
+		<div class="col-md-4">
+			<div class="well">
+			Ads!
+			</div>
+		</div>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-6 comments">
+	<div class="col-md-12 comments">
 		<div id="comments-box">
 			<h2>Comments <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
 				<% if @comments.any? %>

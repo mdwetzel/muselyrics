@@ -145,13 +145,25 @@ div#latest-discussions {
 	}
 }
 
-div#songs, div#album { 
+div#songs, div#album, div#song-lyrics { 
 	h2 { 
 		color:#CC5C00;
 		font-size:25px;
 		font-weight:bold;
 		margin:0;
 		text-transform:uppercase;
+	}
+
+	a { 
+		color:#CC5C00;
+	}
+}
+
+div#lyrics { 
+	padding:15px 0;
+
+	p {
+		font-size:1.2em;
 	}
 }
 
@@ -169,4 +181,8 @@ div#songs {
 			}
 		}
 	}
+}
+
+.alert-warning { 
+	background-color:pink;
 }
