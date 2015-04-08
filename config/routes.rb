@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  get '/about', to: 'static_pages#about', as: 'about'
+  get '/contact', to: 'static_pages#contact', as: 'contact'
   get 'users/profile/:id', to: 'users#profile', as: 'user_profile'
 
   devise_for :users
@@ -27,7 +29,4 @@ Rails.application.routes.draw do
   resources :albums, except: [:new], path: '' do 
     resources :songs, except: [:index], path: ''
   end
-  
-  get '/about', to: 'static_pages#about', as: 'about'
-  get '/contact', to: 'static_pages#contact', as: 'contact'
 end
