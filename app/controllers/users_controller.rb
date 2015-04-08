@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def profile
-  	@user = User.find(params[:id])
+  	@user = User.where("lower(username) LIKE ?", 
+  		params[:id].downcase).first
   end
 end
