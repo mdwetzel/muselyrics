@@ -1,0 +1,14 @@
+<h1>New Message from Contact Form</h1>
+
+<dl>
+	<dd>IP:</dd>
+	<dt><%= @message.ip %></dt>
+	<dd>Date:</dd>
+	<dt><%= @message.sent_at %></dt>
+	<dd>Name:</dd>
+	<dt><%= @message.name %></dt>
+	<dd>Email:</dd>
+	<dt><%= mail_to @message.email %></dt>
+	<dd>Message:</dd>
+	<dt><%= simple_format @message.body %></dt>
+</dl>

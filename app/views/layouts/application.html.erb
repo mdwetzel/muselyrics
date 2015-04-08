@@ -12,6 +12,7 @@
 
 <div class="container">
 	<%= render 'layouts/header' %>
+	<%= render 'layouts/flash' %>
 	<%= yield %>
 	<%= render 'layouts/footer' %>
 	<%= render 'layouts/ga' if Rails.env.production? %>

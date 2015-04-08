@@ -1,0 +1,12 @@
+<div class="col-md-12">
+	<div class="well">
+		<h2>Drop us a line</h2>
+
+		<%= simple_form_for @message do |f| %>
+			<%= f.input :name, label: "Your name" %>
+			<%= f.input :email, label: "Your email address" %>
+			<%= f.input :body, label: "Message" %>
+			<%= f.submit "Send Message", class: "btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

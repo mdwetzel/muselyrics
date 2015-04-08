@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :messages, only: [:index, :new, :create]
+
+  get "/contact", to: "messages#index", as: "contact"
+
   get '/about', to: 'static_pages#about', as: 'about'
-  get '/contact', to: 'static_pages#contact', as: 'contact'
   get 'users/profile/:id', to: 'users#profile', as: 'user_profile'
 
   devise_for :users
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
   resources :albums
   resources :songs
   resources :comments, except: [:new, :index, :show]
+
 
   resources :comments do
     member do
