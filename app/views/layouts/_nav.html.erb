@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <%= form_tag songs_path, method: :get, class: "navbar-form navbar-left" do %>
-        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Enter a song name" %>
+        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Enter a song name", autofocus: true %>
         <%= submit_tag "Search", name: nil, class: "btn btn-primary" %>
       <% end %>
 
