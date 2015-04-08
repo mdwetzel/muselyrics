@@ -5,3 +5,25 @@
 textarea#song_lyrics { 
 	height:450px;
 }
+
+div#search-listings { 
+	background:#fff;
+	border-radius:5px;
+	padding:8px;
+
+	h2 { 
+		margin:0 0 10px 0;
+	}
+
+	ul {
+		padding-left:0;
+
+		li { 
+			list-style:none;
+
+			a { 
+				font-size:1.3em;
+			}
+		}
+	}
+}
