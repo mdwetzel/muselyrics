@@ -2,6 +2,8 @@
 	<div class="well">
 		<h2><%= @user.username %></h2>
 
+		<%= image_tag @user.avatar %>
+
 		<%= link_to "Send private message", "#" %>
 
 		<h3><%= user_status(@user) %></h3>
