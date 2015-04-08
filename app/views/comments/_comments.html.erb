@@ -25,7 +25,8 @@
 				<% end %>
 			</div>
 			<span class="user-email">
-			<%= link_to comment.user.email, '#' %>
+			<%= link_to comment.user.username, 
+				user_profile_path(comment.user.username.downcase) %>
 			</span>
 		</header>
 		<div class="clearfix"></div>
