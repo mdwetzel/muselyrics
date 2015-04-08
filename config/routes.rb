@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get "/contact", to: "messages#index", as: "contact"
 
   get '/about', to: 'static_pages#about', as: 'about'
-  get 'users/profile/:id', to: 'users#profile', as: 'user_profile'
+  get '/profile', to: 'users#profile', as: 'self_profile'
+  get '/profile/:id', to: 'users#profile', as: 'user_profile'
 
   devise_for :users
 

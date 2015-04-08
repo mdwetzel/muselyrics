@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :username,
     :presence => true,
     :uniqueness => {
