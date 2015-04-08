@@ -1,13 +1,13 @@
 class MessagesController < ApplicationController
 
-  before_action :set_madness, only: [:index, :create]
+  include SongsHelper 
 
 	def index
 		@message = Message.new
 	end
 
 	def create
-		@message = Message.new(message_params)
+	  @message = Message.new(message_params)
     @message.ip = request.remote_ip
     @message.sent_at = Time.now
 
@@ -20,10 +20,6 @@ class MessagesController < ApplicationController
 	end
 
 		private
-
-    def set_madness
-      @madness = Song.find_by(title: "Madness")
-    end
 
 		def message_params
 			params.require(:message).permit(:body, :name, :email)
