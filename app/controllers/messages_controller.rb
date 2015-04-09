@@ -15,11 +15,11 @@ class MessagesController < ApplicationController
   		ContactMailer.new_message(@message).deliver_now
 			redirect_to messages_path, notice: "Your message has been sent. Thanks!"
 		else
-			render 'index'
+			render :index
 		end	
 	end
 
-		private
+	private
 
 		def message_params
 			params.require(:message).permit(:body, :name, :email)

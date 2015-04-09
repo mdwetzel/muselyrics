@@ -1,3 +1,16 @@
-ContactMailer#new_message
+New Message from Contact Form
 
-<%= @greeting %>, find me in app/views/contact_mailer/new_message.text.erb
+IP:
+<%= @message.ip %>
+
+Date:
+<%= @message.sent_at %>
+
+Name:
+<%= @message.name %>
+
+Email:
+<%= mail_to @message.email %>
+
+Message:
+<%= simple_format @message.body %>
