@@ -5,8 +5,14 @@
 $ ->
   $('.upvote').on "ajax:success", (e, data, status, xhr) ->
     set_score @, data.score
+    set_voted_color @
   $('.downvote').on "ajax:success", (e, data, status, xhr) ->
     set_score @, data.score
+    set_voted_color @
 
   set_score = (thisObj, score) -> 
     $(thisObj).siblings('span').text(score)
+
+  set_voted_color = (thisObj) ->
+  	$(thisObj).find('i').addClass('voted')
+  	$(thisObj).siblings('a').find('i').removeClass('voted')

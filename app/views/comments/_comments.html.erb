@@ -4,7 +4,11 @@
 			<div class="pull-left">
 				<% if can? :upvote, comment %>
 					<%= link_to like_comment_path(comment), method: :put, remote: true, class: "upvote" do %>
-						<i class="glyphicon glyphicon-arrow-up upvote"></i>
+						<% if current_user.voted_up_on?(comment) %>
+							<i class="glyphicon glyphicon-arrow-up upvote voted"></i>
+						<% else %>
+							<i class="glyphicon glyphicon-arrow-up upvote"></i>
+						<% end %>
 					<% end %>
 				<% else %>
 					<%= link_to login_path, class: "upvote", "data-toggle" => "tooltip",
@@ -15,7 +19,12 @@
 				<span class="score"><%= comment.score %></span>
 				<% if can? :downvote, comment %>
 					<%= link_to dislike_comment_path(comment), method: :put, remote: true, class: "downvote"  do %>
-						<i class="glyphicon glyphicon-arrow-down downvote"></i>
+				
+						<% if current_user.voted_down_on?(comment) %>
+							<i class="glyphicon glyphicon-arrow-down downvote voted"></i>
+						<% else %>
+							<i class="glyphicon glyphicon-arrow-down downvote"></i>
+						<% end %>
 					<% end %>
 				<% else %>
 					<%= link_to login_path, class: "upvote", "data-toggle" => "tooltip",
