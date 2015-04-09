@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require bootstrap
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
