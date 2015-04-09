@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sitemaps/show'
+
   root 'static_pages#home'
 
   resources :messages, only: [:index, :new, :create]
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about', as: 'about'
   get '/profile', to: 'users#profile', as: 'self_profile'
   get '/profile/:id', to: 'users#profile', as: 'user_profile'
+
+  get '/sitemap.xml.gz' => 'sitemaps#show'
 
   devise_for :users
 
