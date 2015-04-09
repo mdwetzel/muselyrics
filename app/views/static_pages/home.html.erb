@@ -1,23 +1,20 @@
 <% provide(:title, "Latest Muse Lyrics and Discussions") %>
 
-<div class="container">
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-md-9">
-    	<div id="latest-discussions">
-	      <h2>Latest song discussions</h2>
-	      <%= render 'comments/latest' %>
-	    </div>
-    </div>
-    <div class="col-md-3">
-      <div id="albums">
-        <h2>Albums</h2>
-        <% @albums.each do |album| %>
-          <article>
-            <%= link_to(image_tag(album.image.thumb_2), album) %>
-          </article>
-        <% end %>
-      </div>
+<div class="row">
+  <div class="col-md-9">
+  	<div id="latest-discussions">
+      <h2>Latest song discussions</h2>
+      <%= render 'comments/latest' %>
     </div>
   </div>
-</div> <!-- /container -->
+  <div class="col-md-3">
+    <div id="albums">
+      <h2>Albums</h2>
+      <% @albums.each do |album| %>
+        <article>
+          <%= link_to(image_tag(album.image.thumb_2), album) %>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</div>
