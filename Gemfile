@@ -20,6 +20,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'cancancan'
+gem 'sitemap_generator'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
