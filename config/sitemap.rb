@@ -1,5 +1,14 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.muselyrics.com"
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
+aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+fog_provider: 'AWS',
+fog_directory: ENV['AWS_BUCKET']
+)
+SitemapGenerator::Sitemap.sitemaps_host = ENV['SITEMAP_HOST']
+SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

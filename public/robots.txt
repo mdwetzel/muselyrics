@@ -4,4 +4,4 @@
 # User-agent: *
 # Disallow: /
 
-Sitemap: http://www.muselyrics.com/sitemap.xml.gz
+Sitemap: https://muselyrics.s3.amazonaws.com/sitemaps/sitemap_index.xml.gz
