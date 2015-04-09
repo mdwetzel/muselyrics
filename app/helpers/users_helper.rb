@@ -10,10 +10,7 @@ module UsersHelper
 	end
 
 	def user_participation(user)
-		if user.comments.count > 1
-			"#{user.comments.count} comments"
-		else
+		user.comments.count > 1 ? "#{user.comments.count} comments" : 
 			"No comments yet"
-		end
 	end
 end

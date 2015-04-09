@@ -1,28 +1,32 @@
-<div class="col-md-12">
-	<div class="well">
-		<h2><%= @user.username %></h2>
+<div class="row">
+	<div class="col-md-12">
+		<div class="well">
+			<h2><%= @user.username %></h2>
 
-		<%= image_tag @user.avatar %>
+			<%= image_tag @user.avatar %>
 
-		<%= link_to "Send private message", "#" %>
+			<%= link_to "Send private message", "#" %>
 
-		<h3><%= user_status(@user) %></h3>
- 
-		<%= user_participation(@user) %>
+			<h3><%= user_status(@user) %></h3>
+	 
+			<%= user_participation(@user) %>
 
-		<% if @latest.any? %>
-			<h4>Latest activity</h4>
+			<% if @user.latest_comments.any? %>
+				<h4>Latest activity</h4>
 
-			<% @latest.each do |latest| %>
-			<article>
-				<%= link_to latest.song.title, [latest.song.album, latest.song] %>
-				<span class="glyphicon glyphicon-chevron-right"></span>
-				<%= truncate(latest.body) do %>
-					<%= link_to "(read more)",  [latest.song.album, latest.song, anchor: "#{latest.id}"] %> 
-					<small><%= time_ago_in_words(latest.created_at) %> ago</small>
+				<% @user.latest_comments.each do |comment| %>
+				<article>
+					<%= link_to comment.song.title, [comment.song.album, comment.song] %>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<%= truncate(comment.body) do %>
+						<%= link_to "(read more)",  [comment.song.album, comment.song,
+							anchor: "#{comment.id}"] %> 
+					<% end %>
+					<small><%= time_ago_in_words(comment.created_at) %> ago</small>
+
+	 			</article>
 				<% end %>
- 			</article>
 			<% end %>
-		<% end %>
-	</div>
-</div>	
+		</div>
+	</div>	
+</div>
