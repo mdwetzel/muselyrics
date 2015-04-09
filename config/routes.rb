@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile', as: 'self_profile'
   get '/profile/:id', to: 'users#profile', as: 'user_profile'
 
-  get '/sitemap.xml.gz' => 'sitemaps#show'
+  get '/sitemap.xml.gz', to: 'sitemaps#show'
 
   devise_for :users
 

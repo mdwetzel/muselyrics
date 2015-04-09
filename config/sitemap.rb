@@ -30,11 +30,15 @@ SitemapGenerator::Sitemap.create do
   #
   # Add all articles:
   #
-    Album.all.each do |album|
-      add album_path(album), :lastmod => album.updated_at
-    end
 
-    Song.all.each do |song|
-      add album_song_path(song.album, song), :lastmod => song.updated_at
-    end
+  add '/contact'
+  add '/about'
+
+  Album.all.each do |album|
+    add album_path(album), :lastmod => album.updated_at
+  end
+
+  Song.all.each do |song|
+    add album_song_path(song.album, song), :lastmod => song.updated_at
+  end
 end
