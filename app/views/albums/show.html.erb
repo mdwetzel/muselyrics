@@ -1,35 +1,37 @@
 <% provide(:title, "#{@album.title} Lyrics") %>
 
-<div class="col-md-5">
-	<div class="well">
-		<div id="album">
-			<h2><%= @album.title %> <small><%= @album.year %></small></h2>
-			<%= image_tag @album.image.thumb_4, class: 'album-photo' %>
+<div class="row">
+	<div class="col-md-5">
+		<div class="well">
+			<div id="album">
+				<h2><%= @album.title %> <small><%= @album.year %></small></h2>
+				<%= image_tag @album.image.thumb_4, class: 'album-photo' %>
 
-			<% if can? :manage, :album %>					
-				<%= link_to "Edit Album", edit_album_path(@album) %>
-			<% end %>
+				<% if can? :manage, :album %>					
+					<%= link_to "Edit Album", edit_album_path(@album) %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="col-md-3">
-	<div class="well">
-		<div id="songs">
-			<h2>Songs</h2>
+	<div class="col-md-3">
+		<div class="well">
+			<div id="songs">
+				<h2>Songs</h2>
 
-			<% if @songs.any? %>
-			<ul>
-			<% @songs.each do |song| %>
-				<li><%= song.track %> - <%= link_to song.title, [song.album, song] %></li>
-			<% end %>
-			</ul>
-			<% else %>
-			<p>No songs yet.</p>
-			<% end %>
+				<% if @songs.any? %>
+				<ul>
+				<% @songs.each do |song| %>
+					<li><%= song.track %> - <%= link_to song.title, [song.album, song] %></li>
+				<% end %>
+				</ul>
+				<% else %>
+				<p>No songs yet.</p>
+				<% end %>
 
-			<% if can? :manage, Song %>
-			<p><%= link_to "Add Song", new_album_song_path(@album) %></p>
-			<% end %>
+				<% if can? :manage, Song %>
+				<p><%= link_to "Add Song", new_album_song_path(@album) %></p>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
