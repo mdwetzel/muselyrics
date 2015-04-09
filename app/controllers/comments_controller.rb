@@ -4,19 +4,33 @@ class CommentsController < ApplicationController
 
   load_and_authorize_resource
 
-  def upvote
-    @comment.liked_by current_user
-
+  def upvote  
+    remove = false
+    if current_user.voted_up_on?(@comment)
+      remove = true
+      @comment.unliked_by current_user
+    else
+      @comment.liked_by current_user
+    end
+    
     respond_to do |format|
-      format.json { render json: { score: @comment.score } }
+      format.json { render json: { score: @comment.score, type: "upvote", 
+        remove: remove  } }
     end
   end
 
   def downvote
-    @comment.downvote_from current_user
+    remove = false
+    if current_user.voted_down_on?(@comment)
+      remove = true
+      @comment.undisliked_by current_user
+    else
+      @comment.disliked_by current_user
+    end
 
     respond_to do |format|
-      format.json { render json: { score: @comment.score } }
+      format.json { render json: { score: @comment.score, type: "downvote",
+        remove: remove } }
     end
   end
 
