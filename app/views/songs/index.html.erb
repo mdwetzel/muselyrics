@@ -1,16 +1,18 @@
 <% provide(:title, "Search results: #{params[:q]}") %>
 
-<div class="col-md-12">
-  <div id="search-listings">
-    <% if @songs.any? %>
-    <h2><%= "Found #{pluralize(@songs.count, 'result')} matching '#{params[:q]}'" %></h2>
-    <ul>
-      <% @songs.each do |song| %>
-        <li><%= link_to song.title, [song.album, song] %></li>
+<div class="row">
+  <div class="col-md-12">
+    <div id="search-listings">
+      <% if @songs.any? %>
+      <h2><%= "Found #{pluralize(@songs.count, 'result')} matching '#{params[:q]}'" %></h2>
+      <ul>
+        <% @songs.each do |song| %>
+          <li><%= link_to song.title, [song.album, song] %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p class="text-center">No songs found!</p>
       <% end %>
-    </ul>
-    <% else %>
-      <p class="text-center">No songs found!</p>
-    <% end %>
+    </div>
   </div>
 </div>
