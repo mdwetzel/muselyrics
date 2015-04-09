@@ -1,18 +1,31 @@
 class Song < ActiveRecord::Base
-	belongs_to :album
+
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 
+	belongs_to :album
 	has_many :comments, dependent: :destroy
 
-	validates :title, presence: true, length: { maximum: 150 }
-	validates :track, presence: true, numericality: { only_integer: true, greater_than: 0 }
-	validates :lyrics, presence: true, length: { maximum: 5000 }
-	validates :album, presence: true
+	validates :title, 
+						presence: true,
+						length: { maximum: 150 }
 
-	def self.search(q)
-	  	if q
-	      Song.where("LOWER(title) LIKE ?", "%#{q.downcase}%")
+	validates :track,
+						presence: true,
+						numericality: {
+							only_integer: true,
+							greater_than: 0 }
+
+	validates :lyrics,
+						presence: true,
+						length: { maximum: 5000 }
+
+	validates :album,
+						presence: true
+
+	def self.search(query)
+	  	if query
+	      Song.where("LOWER(title) LIKE ?", "%#{query.downcase}%")
 	    else
 	      Song.all
 	    end
@@ -20,5 +33,13 @@ class Song < ActiveRecord::Base
 
 	def self.madness
 		Song.find_by(title: "Madness")
+	end
+
+	def other_tracks_on_album
+		album.songs.order('track').where.not(id: self)
+	end
+
+	def comments_by_score
+		comments.order(cached_votes_up: :desc)
 	end
 end
