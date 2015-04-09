@@ -24,11 +24,8 @@ class Song < ActiveRecord::Base
 						presence: true
 
 	def self.search(query)
-	  	if query
-	      Song.where("LOWER(title) LIKE ?", "%#{query.downcase}%")
-	    else
-	      Song.all
-	    end
+  	query.empty? ? Song.all : 
+  		Song.where("LOWER(title) LIKE ?", "%#{query.downcase}%") 
 	end
 
 	def self.madness
