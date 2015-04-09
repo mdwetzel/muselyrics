@@ -17,4 +17,8 @@ class Song < ActiveRecord::Base
 	      Song.all
 	    end
 	end
+
+	def self.madness
+		Song.find_by(title: "Madness")
+	end
 end

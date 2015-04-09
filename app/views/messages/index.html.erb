@@ -9,7 +9,7 @@
 			<p>We're always interested in feedback, suggestions and general conversation about Muse Lyrics and the band in general. This
 			site is run by fans, for fans and is always looking to improve itself.</p>
 			<p>If you have something to say then let us know!</p>
-			<p>To not contact us is...<%= link_to @madness.title.downcase, [@madness.album, @madness] %>.</p>
+			<p>To not contact us is...<%= madness_link %>.</p>
 
 			<%= simple_form_for @message do |f| %>
 				<%= f.input :name, label: "Your name" %>
