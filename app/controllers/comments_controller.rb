@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
+  
   before_action :set_comment, only: [:edit, :update, :destroy, :upvote, :downvote]
-
-  #before_action :authenticate_user!, only: [:upvote, :downvote]
 
   load_and_authorize_resource
 
@@ -25,39 +24,28 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to album_song_path(@comment.song.album, @comment.song),
-        notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        set_comment_prerequisites
-        format.html { render 'songs/show' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to album_song_path(@comment.song.album, @comment.song),
+        notice: 'Comment was successfully created.'
+    else
+      set_comment_prerequisites
+      render 'songs/show'
     end
   end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-      format.html { redirect_to album_song_path(@comment.song.album, @comment.song),
-        notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.update(comment_params)
+      redirect_to album_song_path(@comment.song.album, @comment.song),
+        notice: 'Comment was successfully updated.' 
+    else
+      render :edit
     end
   end
 
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to album_song_path(@comment.song.album, @comment.song),
-        notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to album_song_path(@comment.song.album, @comment.song),
+      notice: 'Comment was successfully destroyed.' 
   end
 
   private
@@ -69,8 +57,8 @@ class CommentsController < ApplicationController
     def set_comment_prerequisites
       @album = @comment.song.album
       @song = @comment.song
-      @songs = @album.songs.order('track').where.not(id: @song)
-      @comments = @song.comments.order('created_at')
+      @songs = @song.other_tracks_on_album
+      @comments = @song.comments_by_score
     end
 
     def comment_params
