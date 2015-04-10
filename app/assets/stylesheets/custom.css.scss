@@ -1,6 +1,50 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$mainWellColor:#ab1a25;
+$secondaryWellColor:#002635;
+
+.container.main { 
+	background-color: rgba(0,0,0,0.75);
+}
+
+div.well { 
+	background-color:$secondaryWellColor;
+	border:1px solid $secondaryWellColor;
+	padding:3px;
+
+	h2 { 
+		color:#efe7be;
+		font-size:1.8em;
+		font-weight:bold;
+		margin:3px 0;
+		text-transform:uppercase;
+	}
+
+	article { 
+		background-color:#EFE7BE;
+		border-radius:5px;
+		margin-bottom:3px;
+		padding:10px;
+
+		img { 
+			float:left;
+			padding-right:8px;
+		}
+	}
+}
+
+div.well.secondary {
+	background-color:$mainWellColor;
+	border:1px solid $mainWellColor;
+
+	article { 
+		background-color:$mainWellColor;
+		margin-bottom:5px;
+		padding:3px;
+	}
+}
+
 body { 
 	background-color:#000;
 	background-image:image-url("2ndlaw.jpg");
@@ -15,11 +59,14 @@ body {
 
 header { 
 
+		display:inline;
+
 	h1 { 
 		font-size:5em;
 		text-transform:uppercase;
 		font-weight: bold;
 
+		display:inline-block;
 
 		a { 
 			color:#fff;
@@ -29,6 +76,10 @@ header {
 				color:orange;
 				text-decoration:overline underline;
 			}
+		}
+
+		form { 
+			display:inline;
 		}
 	}
 }

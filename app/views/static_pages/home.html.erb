@@ -2,18 +2,19 @@
 
 <div class="row">
   <div class="col-md-9">
-  	<div id="latest-discussions">
+  	<div class="well">
       <h2>Latest song discussions</h2>
       <%= render 'comments/latest' %>
     </div>
   </div>
   <div class="col-md-3">
-    <div id="albums">
+    <div class="well secondary pull-right">
       <h2>Albums</h2>
       <% @albums.each do |album| %>
         <article>
           <%= link_to(image_tag(album.image.thumb_2), album) %>
         </article>
+        <div class="clearfix"></div>
       <% end %>
     </div>
   </div>
