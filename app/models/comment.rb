@@ -20,6 +20,6 @@ class Comment < ActiveRecord::Base
   end
 
   def self.latest
-  	self.order('created_at DESC')
+  	self.order('created_at DESC').limit(25)
   end
 end

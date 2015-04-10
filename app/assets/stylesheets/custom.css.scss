@@ -1,16 +1,66 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$mainWellColor:#ab1a25;
-$secondaryWellColor:#002635;
+$red:#ab1a25;
+$blue:#002635;
+$lightBlue:#013440;
+$orange:#d97925;
+$tan:#efe7be;
+
+.navbar {
+	background-color:$blue;
+
+	.container { 
+		padding:0;
+	}
+}
+
+input[type="search"] {
+	background-color:#000;
+	border-color:#000;
+	text-transform:uppercase;
+
+	&:focus { 
+		border-color:#000;
+	}
+
+	placeholder { 
+		text-transform:uppercase;
+	}
+}
+
+input[type="submit"], input[type="button"] {
+	background-color:$red;
+	border-color:$red;
+	text-transform:uppercase;
+
+
+	&:hover {
+
+		border-color:darken($red, 5%);
+		background-color:darken($red, 5%);
+	}
+}
+
+button { 
+	background-color:$red;
+	border-color:$red;
+	color:$orange;
+	text-transform:uppercase;
+
+	&:hover {
+		border-color:darken($red, 15%);
+		background-color:darken($red, 15%);
+	}
+}
 
 .container.main { 
-	background-color: rgba(0,0,0,0.75);
+	/*background-color: rgba(0,0,0,0.4);*/
 }
 
 div.well { 
-	background-color:$secondaryWellColor;
-	border:1px solid $secondaryWellColor;
+	background-color:$blue;
+	border:1px solid $blue;
 	padding:3px;
 
 	h2 { 
@@ -22,10 +72,23 @@ div.well {
 	}
 
 	article { 
-		background-color:#EFE7BE;
+		background-color:$tan;
 		border-radius:5px;
-		margin-bottom:3px;
+		margin-bottom:5px;
 		padding:10px;
+
+		header { 
+			color:$red;
+			display:block;
+
+			a { 
+				color:$red;
+			}
+
+			small { 
+				color:gray;
+			}
+		}
 
 		img { 
 			float:left;
@@ -35,11 +98,11 @@ div.well {
 }
 
 div.well.secondary {
-	background-color:$mainWellColor;
-	border:1px solid $mainWellColor;
+	background-color:$orange;
+	border:1px solid $orange;
 
 	article { 
-		background-color:$mainWellColor;
+		background-color:$orange;
 		margin-bottom:5px;
 		padding:3px;
 	}
@@ -65,16 +128,21 @@ header {
 		font-size:5em;
 		text-transform:uppercase;
 		font-weight: bold;
+		background-color:rgba(0,0,0,0.4);
 
 		display:inline-block;
 
 		a { 
-			color:#fff;
+			color:$orange;
 			text-shadow:#000 -1px -1px 5px;
 			text-decoration:overline underline;
 			&:hover { 
-				color:orange;
+				color:darken($orange, 10%);
 				text-decoration:overline underline;
+			}
+
+			&:active, &:focus { 
+				color:darken($orange, 10%);
 			}
 		}
 

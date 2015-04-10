@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'cancancan'
 gem 'sitemap_generator'
+gem 'will_paginate'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
