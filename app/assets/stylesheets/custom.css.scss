@@ -69,6 +69,18 @@ div.well {
 		font-weight:bold;
 		margin:3px 0;
 		text-transform:uppercase;
+
+		small { 
+			a {
+				color:$orange;
+			}
+		}
+	}
+
+	#lyrics { 
+		background-color:$tan;
+		border-radius:5px;
+		padding:10px;
 	}
 
 	article { 
@@ -160,12 +172,6 @@ header {
 
 .album-photo { 
 	padding:10px 0;
-}
-
-h2 { 
-	small { 
-		color:orange;
-	}
 }
 
 footer#page-footer {
@@ -274,46 +280,13 @@ div#latest-discussions {
 	}
 }
 
-div#songs, div#album, div#song-lyrics { 
-	h2 { 
-		color:#CC5C00;
-		font-size:25px;
-		font-weight:bold;
-		margin:0;
-		text-transform:uppercase;
-	}
-
-	a { 
-		color:#CC5C00;
-	}
-}
-
-div#lyrics { 
-	padding:15px 0;
-
-	p {
-		font-size:1.2em;
-	}
-}
-
-div#songs { 
-	ul {
-		margin-top:10px;
-		padding-left:0;
-
-		li {
-			font-size:1.25em;
-			list-style-type:none;
-
-			a { 
-				color:darkblue;
-			}
-		}
-	}
-}
-
-.alert-warning { 
+p.alert-warning { 
 	background-color:pink;
+	color:$red;
+
+	a:link { 
+		color:$red !important;
+	}
 }
 
 div#contact { 
