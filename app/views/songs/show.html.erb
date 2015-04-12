@@ -58,11 +58,11 @@
 <div class="row">
 	<div class="col-md-12 comments">
 		<div class="well">
-			<h2>Comments <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
+			<h2>Comments / Song Meanings <% if @comments.any? %><small><%= @comments.count %></small><% end %></h2>
 			<% if @comments.any? %>
 				<%= render 'comments/comments' %>
 			<% else %>
-				<p>No comments yet!</p>
+				<p class="oops">No comments or song meanings yet! You should get the party started.</p>
 			<% end %>
 			<%= render 'comments/new' %>
 		</div>

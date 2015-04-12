@@ -134,6 +134,7 @@ div.well.secondary {
 
 				a { 
 					color:$red;
+					font-weight:bold;
 					text-transform:uppercase;
 				}
 			}
@@ -310,4 +311,9 @@ div#contact {
 	textarea { 
 		height:300px;
 	}
+}
+
+p.oops { 
+	color:$red;
+	font-size:1.2em;
 }

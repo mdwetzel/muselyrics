@@ -4,7 +4,7 @@
   <div class="container">
 
       <%= form_tag songs_path, method: :get, class: "navbar-form navbar-left" do %>
-        <%= search_field_tag :q, params[:q], class: "form-control", placeholder: "Find a song", autofocus: true %>
+        <%= search_field_tag :q, params[:q], class: "form-control", placeholder: "Find a song" %>
           <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
       <% end %>
 
