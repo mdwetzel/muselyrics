@@ -133,7 +133,8 @@ div.well.secondary {
 				list-style:none;
 
 				a { 
-					/*font-weight:bold;*/
+					color:$red;
+					text-transform:uppercase;
 				}
 			}
 		}

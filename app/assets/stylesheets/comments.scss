@@ -31,8 +31,20 @@ i.voted {
 
 span.score { 
 	background-color:lightgray;
+	color:$red;
 	border-radius:5px;
 	padding:0 5px;
+	display:inline-block;
+	text-align:center;
+	width:30px;
+}
+
+small.manage-comment { 
+	text-transform:uppercase;
+
+	a {	
+		color:#000;
+	}
 }
 
 span.username {
@@ -46,6 +58,11 @@ span.username {
 	}
 }
 
+span.created-at { 
+	color:gray;
+	font-size:.8em;
+}
+
 #comments-box { 
 	background-color:#3db0b7;
 	padding:10px;
@@ -55,6 +72,7 @@ span.username {
 	h2 { 
 		small { 
 			color:$orange;
+			font-weight:bold;
 		}
 	}
 }
