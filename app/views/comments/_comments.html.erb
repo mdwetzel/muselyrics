@@ -1,7 +1,8 @@
 <% @comments.each do |comment| %>
-	<article id="<%= comment.id %>">
+	<article id="<%= comment.id %>" class="comment">
 		<header>
 			<div class="pull-left">
+			<div id="vote-box">
 				<% if can? :upvote, comment %>
 					<%= link_to like_comment_path(comment), method: :put, remote: true, class: "upvote" do %>
 						<% if current_user.voted_up_on?(comment) %>
@@ -33,7 +34,8 @@
 					<% end %>
 				<% end %>
 			</div>
-			<span class="user-email">
+			</div>
+			<span class="username">
 			<%= link_to comment.user.username, 
 				user_profile_path(comment.user.username.downcase) %>
 			</span>
@@ -41,6 +43,7 @@
 		<div class="clearfix"></div>
 		<div class="content"><%= simple_format comment.body %></div>
 		<footer>
+			<small>
 			<%= time_ago_in_words comment.created_at %> ago
 			<% if can? :update, comment %>
 				| 
@@ -50,7 +53,7 @@
 				<%= link_to "Destroy", comment, method: :delete, 
 					data: { confirm: "Are you sure?" } %>
 			<% end %>	
+			</small>
 		</footer>
 	</article>
-	<br>
 <% end %>

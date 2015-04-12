@@ -1,11 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-$red:#ab1a25;
-$blue:#002635;
-$lightBlue:#013440;
-$orange:#d97925;
-$tan:#efe7be;
+@import "variables";
 
 .navbar {
 	background-color:$blue;
@@ -63,18 +58,27 @@ div.well {
 	border:1px solid $blue;
 	padding:3px;
 
-	h2 { 
+	h2, h3 { 
 		color:#efe7be;
 		font-size:1.8em;
 		font-weight:bold;
 		margin:3px 0;
 		text-transform:uppercase;
 
+		a {
+			text-decoration:underline overline;
+		} 
+
 		small { 
 			a {
 				color:$orange;
 			}
 		}
+	}
+
+	h3 { 
+		font-size:1.6em;
+		margin-top:25px;
 	}
 
 	#lyrics { 
@@ -118,6 +122,22 @@ div.well.secondary {
 		margin-bottom:5px;
 		padding:3px;
 	}
+
+	#songs { 
+		ul { 
+			background-color:$tan;
+			border-radius:5px;
+			padding:10px;
+
+			li { 
+				list-style:none;
+
+				a { 
+					/*font-weight:bold;*/
+				}
+			}
+		}
+	}	
 }
 
 body { 
@@ -126,10 +146,6 @@ body {
 	background-repeat: no-repeat;
 	background-position:-500px -100px;
 
-}
-
-.voted { 
-	color:red;
 }
 
 header { 

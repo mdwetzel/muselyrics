@@ -1,6 +1,4 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables';
 
 article#comments { 
 
@@ -23,7 +21,12 @@ article#comments {
 }
 
 i.upvote, i.downvote, span.score { 
+	color:$orange;
 	font-size:1.5em;
+}
+
+i.voted { 
+	color:$red;
 }
 
 span.score { 
@@ -32,11 +35,49 @@ span.score {
 	padding:0 5px;
 }
 
-span.user-email { 
+span.username {
+	font-size:1.5em;
+	font-weight:bold;
 	margin-left:15px;
+
+	a { 
+		color:$blue !important;
+		text-decoration: underline overline;
+	}
 }
 
 #comments-box { 
 	background-color:#3db0b7;
 	padding:10px;
+}
+
+.comments {
+	h2 { 
+		small { 
+			color:$orange;
+		}
+	}
+}
+
+.comment { 
+	header { 
+		padding-bottom:15px;
+		margin-bottom:10px;
+	}
+
+	small { 
+		color:gray;
+	}
+}
+
+#vote-box { 
+	background-color:$lightBlue;
+	border-radius:5px;
+	padding:5px;
+}
+
+#new_comment {
+	textarea { 
+		height:150px;
+	}
 }
