@@ -10,6 +10,17 @@
 	}
 }
 
+a { 
+	color:$orange;
+	font-weight:bold;
+
+	&:hover, &:active, &:focus { 
+		color:$orange;
+		font-weight:bold;
+		text-decoration:underline;
+	}
+}
+
 input[type="search"] {
 	background-color:#000;
 	border-color:#000;
@@ -70,6 +81,8 @@ div.well {
 		} 
 
 		small { 
+			color:$orange;
+
 			a {
 				color:$orange;
 			}
@@ -116,6 +129,11 @@ div.well {
 div.well.secondary {
 	background-color:$orange;
 	border:1px solid $orange;
+
+	a { 
+		color:$red;
+
+	}
 
 	article { 
 		background-color:$orange;
@@ -186,10 +204,6 @@ header {
 	legend { 
 		padding:10px 0;
 	}
-}
-
-.album-photo { 
-	padding:10px 0;
 }
 
 footer#page-footer {
@@ -267,6 +281,20 @@ div#latest-discussions {
 		&:last-of-type {
 			margin-bottom:0;
 		}
+	}
+}
+
+div#album {
+	img { 
+		background-color:$tan;
+		padding:5px;
+		margin:5px;
+		float:left;
+	}
+
+	p { 
+		color:#fff;
+		padding:5px;
 	}
 }
 

@@ -1,19 +1,20 @@
 <% provide(:title, "#{@album.title} Lyrics") %>
 
 <div class="row">
-	<div class="col-md-5">
+	<div class="col-md-8">
 		<div class="well">
 			<div id="album">
 				<h2><%= @album.title %> <small><%= @album.year %></small></h2>
 				<%= image_tag @album.image.thumb_4, class: 'album-photo' %>
-
+				<%= simple_format @album.description %>
+				<div class="clearfix"></div>
 				<% if can? :manage, :album %>					
-					<%= link_to "Edit Album", edit_album_path(@album) %>
+					<p><%= link_to "Edit Album", edit_album_path(@album) %></p>
 				<% end %>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="well secondary">
 			<div id="songs">
 				<h2>Songs</h2>
@@ -21,7 +22,8 @@
 				<% if @songs.any? %>
 				<ul>
 				<% @songs.each do |song| %>
-					<li><%= song.track %> - <%= link_to song.title, [song.album, song] %></li>
+					<li><%= "#{song.track}: #{link_to song.title, [song.album, song]}"
+						.html_safe %></li>
 				<% end %>
 				</ul>
 				<% else %>
@@ -32,6 +34,11 @@
 				<p><%= link_to "Add Song", new_album_song_path(@album) %></p>
 				<% end %>
 			</div>
+		</div>
+	</div>
+	<div class="col-md-4 pull-right">
+		<div class="well">
+			<%= render 'layouts/ads' %>
 		</div>
 	</div>
 </div>
