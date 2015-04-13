@@ -107,11 +107,14 @@ div.well {
 		padding:10px;
 
 		header { 
-			color:$red;
 			display:block;
 
 			a { 
 				color:$red;
+			}
+
+			i { 
+				font-size:.75em;
 			}
 
 			small { 
