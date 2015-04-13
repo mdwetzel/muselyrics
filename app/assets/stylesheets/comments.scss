@@ -20,10 +20,11 @@ article#comments {
 	}
 }
 
-i.upvote, i.downvote, span.score { 
-	color:$orange;
-	font-size:1.5em;
-}
+
+	i.upvote, i.downvote, span.score { 
+		color:$orange;
+		font-size:1.5em;
+	}
 
 i.voted { 
 	color:$red;

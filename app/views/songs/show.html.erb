@@ -23,8 +23,7 @@
 
 				<% if can? :delete, @song %>
 					<%= link_to "Delete song", [@song.album, @song],
-						data: { confirm: "Are you sure?" }, method: :delete, 
-						class: "btn btn-danger" %>
+						data: { confirm: "Are you sure?" }, method: :delete %>
 				<% end %>				
 			</div>
 		</div>
