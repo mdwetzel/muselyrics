@@ -3,3 +3,9 @@ $blue:#002635;
 $lightBlue:#013440;
 $orange:#d97925;
 $tan:#efe7be;
+
+@mixin tan-box {
+	background-color:$tan;
+	border-radius:5px;
+	padding:5px;
+}

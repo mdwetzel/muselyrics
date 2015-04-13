@@ -1,7 +1,9 @@
-<%= simple_form_for(@album) do |f| %>
-  <%= f.input :image, label: "Album art" %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :year %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+<div id="album-form">
+  <%= simple_form_for(@album) do |f| %>
+    <%= f.input :image, label: "Album art" %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :year %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

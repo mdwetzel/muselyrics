@@ -89,6 +89,10 @@ span.created-at {
 	}
 }
 
+div#comment {
+	@include tan-box;
+}
+
 #vote-box { 
 	background-color:$lightBlue;
 	border-radius:5px;

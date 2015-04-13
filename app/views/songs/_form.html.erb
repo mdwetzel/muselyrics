@@ -1,9 +1,11 @@
-<%= simple_form_for [@album, @song], 
-  default: { input_html: { class: 'form-control' } } do |f| %>
-  <%= f.hidden_field :album_id, value: @album.id %>
-  <%= f.input :title %>
-  <%= f.input :track %>
-  <%= f.input :description %>
-  <%= f.input :lyrics %>
-  <%= f.submit class: "btn btn-primary" %>
-<% end %>
+<div id="song-form">
+  <%= simple_form_for [@album, @song], 
+    default: { input_html: { class: 'form-control' } } do |f| %>
+    <%= f.hidden_field :album_id, value: @album.id %>
+    <%= f.input :title %>
+    <%= f.input :track %>
+    <%= f.input :description %>
+    <%= f.input :lyrics %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

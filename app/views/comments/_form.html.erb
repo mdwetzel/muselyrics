@@ -1,5 +1,7 @@
-<%= simple_form_for(@comment) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :body %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+<div id="comment">
+  <%= simple_form_for(@comment) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :body %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
