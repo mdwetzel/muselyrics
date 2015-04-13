@@ -1,32 +1,30 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="well">
-			<h2><%= @user.username %></h2>
+			<div id="profile">
+				<h2><%= @user.username %> <small><%= user_status(@user) %></h2>
 
-			<%= image_tag @user.avatar %>
+				<%= image_tag @user.avatar %>
 
-			<%= link_to "Send private message", "#" %>
+				<p id="join-date">Muser since <%= @user.created_at.strftime("%D") %></p>
 
-			<h3><%= user_status(@user) %></h3>
-	 
-			<%= user_participation(@user) %>
+				<% if @user.latest_comments.any? %>
+					<h3>Latest activity <small><%= user_participation(@user) %></small></h3>
 
-			<% if @user.latest_comments.any? %>
-				<h4>Latest activity</h4>
+					<% @user.latest_comments.each do |comment| %>
+					<article>
+						<%= link_to comment.song.title, [comment.song.album, comment.song] %>
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						<%= truncate(comment.body) do %>
+							<%= link_to "(read more)",  [comment.song.album, comment.song,
+								anchor: "#{comment.id}"] %> 
+						<% end %>
+						<small><%= time_ago_in_words(comment.created_at) %> ago</small>
 
-				<% @user.latest_comments.each do |comment| %>
-				<article>
-					<%= link_to comment.song.title, [comment.song.album, comment.song] %>
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					<%= truncate(comment.body) do %>
-						<%= link_to "(read more)",  [comment.song.album, comment.song,
-							anchor: "#{comment.id}"] %> 
+		 			</article>
 					<% end %>
-					<small><%= time_ago_in_words(comment.created_at) %> ago</small>
-
-	 			</article>
 				<% end %>
-			<% end %>
+			</div>
 		</div>
 	</div>	
 </div>

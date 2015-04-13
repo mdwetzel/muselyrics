@@ -18,6 +18,13 @@
 	}
 }
 
+p#join-date, p.confirm-msg { 
+	color:#fff;
+	font-size:1.2em;
+	font-weight:bold;
+	margin:10px 0;
+}
+
 a { 
 	color:$orange;
 	font-weight:bold;
@@ -78,8 +85,14 @@ button {
 	padding:5px;
 }
 
+#profile { 
+	h3 { 
+		margin:0 0 3px 0;
+	}
+}
 
-form.new_user { 
+
+form.new_user, form.edit_user { 
 	@include tan-box;
 }
 
